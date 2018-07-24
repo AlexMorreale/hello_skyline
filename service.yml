@@ -1,0 +1,17 @@
+name: show-and-tell
+image: show-and-tell
+skip_production_deploy: true
+staging:
+  enviroonment:
+    RAILS_ENV: staging
+    RACK_ENV: staging
+
+deployables:
+  web:
+    type: web
+    port: 3000
+    command: "bundle exec rails server -p 3000 -b 0.0.0.0"
+    health_check_path: "/"
+    staging:
+      host: "show-and-tell.staging-ezcater.net"
+      replicas: 1
